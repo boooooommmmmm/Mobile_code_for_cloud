@@ -27,8 +27,9 @@ namespace TeamFantasyMobileAppService.Controllers
 
                 valueX = valueX.Remove(valueX.Length - 1);
                 valueX = valueX.Substring(1);
+                int[] intListX = valueX.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
 
-                return valueX;
+                return intListX[0]+"";
             }
             catch (ParseException pe)
             {
