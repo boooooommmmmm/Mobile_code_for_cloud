@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using Microsoft.Azure.Mobile.Server.Config;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace TeamFantasyMobileAppService.Controllers
 {
@@ -14,7 +15,17 @@ namespace TeamFantasyMobileAppService.Controllers
             JObject json = JObject.Parse(send);
             int age = (int)(json.GetValue("age"));
             string name = (string)json.GetValue("name");
-            return "name is: " + name + "\n" + "age is: " + age + "       get";
+            //Console.WriteLine("get request!===============>");
+            return "name is: " + name + "\n" + "age is: " + age + "+get";
+        }
+
+        public string Get(string send, string aaa)
+        {
+            JObject json = JObject.Parse(send);
+            int age = (int)(json.GetValue("age"));
+            string name = (string)json.GetValue("name");
+            //Console.WriteLine("get request!===============>");
+            return "using scound get function";
         }
     }
 }
