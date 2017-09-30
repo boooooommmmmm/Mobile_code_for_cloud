@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
+    <Compile Include="Controllers\AcceleratorController.cs" />
     <Compile Include="Controllers\NumberController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\TestController.cs" />
