@@ -13,6 +13,7 @@ namespace TeamFantasyMobileAppService.Controllers
     public class AcceleratorController : ApiController
     {
         string drivingState = "dangerous";
+        string valueX;
         int a = 0;
         // GET api/Accelerator
         public string Get(string json)
@@ -21,10 +22,13 @@ namespace TeamFantasyMobileAppService.Controllers
             try
             {
                 JObject jsonO = JObject.Parse(json);
-                //JObject jsonResultO = (JObject)jsonO["result"];
-                string a = jsonO.ToString();
+                valueX = jsonO["result"]["x"].ToString();
+                //valueX = valueX.Substring(1, valueX.Length);
 
-                return a;
+                valueX = valueX.Remove(valueX.Length - 1);
+                valueX = valueX.Substring(1);
+
+                return valueX;
             }
             catch (ParseException pe)
             {
