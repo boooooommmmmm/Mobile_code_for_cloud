@@ -148,6 +148,8 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.MobileApp.cs" />
     <Compile Include="Controllers\AcceleratorController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Account.cs" />
     <Compile Include="Controllers\ParseException.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\TestController.cs" />

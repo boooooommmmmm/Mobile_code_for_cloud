@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using System.Globalization;
 
 namespace TeamFantasyMobileAppService.Controllers
 {
@@ -16,11 +17,11 @@ namespace TeamFantasyMobileAppService.Controllers
         string valueX;
         string valueY;
         string valueZ;
-        int[] intListX;
-        int[] intListY;
-        int[] intListZ;
-        int totalValue;
-        int a = 0;
+        float[] floatListX;
+        float[] floatListY;
+        float[] floatListZ;
+        float totalValue;
+        float a = 0;
         // GET api/Accelerator
         public string Get(string json)
         {
@@ -32,19 +33,19 @@ namespace TeamFantasyMobileAppService.Controllers
                 valueX = jsonO["result"]["x"].ToString();
                 valueX = valueX.Remove(valueX.Length - 1);
                 valueX = valueX.Substring(1);
-                intListX = valueX.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                floatListX = valueX.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
 
                 valueY = jsonO["result"]["y"].ToString();
                 valueY = valueY.Remove(valueY.Length - 1);
                 valueY = valueY.Substring(1);
-                intListY = valueY.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                floatListY = valueY.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
 
                 valueZ = jsonO["result"]["z"].ToString();
                 valueZ = valueZ.Remove(valueZ.Length - 1);
                 valueZ = valueZ.Substring(1);
-                intListZ = valueZ.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                floatListZ = valueZ.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
 
-                totalValue = intListX.Sum() + intListY.Sum() + intListZ.Sum();
+                totalValue = floatListX.Sum() + floatListY.Sum() + floatListZ.Sum();
 
                 if (totalValue < 1000)
                 {
