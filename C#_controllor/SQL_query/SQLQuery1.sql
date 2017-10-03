@@ -1,1 +1,1 @@
-SELECT * from AccountTable
+Select * from LoginTable

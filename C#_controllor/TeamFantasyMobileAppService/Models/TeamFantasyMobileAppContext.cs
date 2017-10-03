@@ -23,6 +23,7 @@ namespace TeamFantasyMobileAppService.Models
         } 
 
         public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<Login> Logins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
