@@ -116,3 +116,4 @@ C:\Android_projects\Mobile_code_for_cloud\C#_controllor\TeamFantasyMobileAppServ
 C:\Android_projects\Mobile_code_for_cloud\C#_controllor\TeamFantasyMobileAppService\obj\Debug\TeamFantasyMobileAppService.pdb
 C:\Android_projects\Mobile_code_for_cloud\C#_controllor\TeamFantasyMobileAppService\obj\Debug\TeamFantasyMobileAppService.Migrations.TeamFantasy.resources
 C:\Android_projects\Mobile_code_for_cloud\C#_controllor\TeamFantasyMobileAppService\obj\Debug\TeamFantasyMobileAppService.csproj.GenerateResource.Cache
+C:\Android_projects\Mobile_code_for_cloud\C#_controllor\TeamFantasyMobileAppService\obj\Debug\TeamFantasyMobileAppService.csprojResolveAssemblyReference.cache
