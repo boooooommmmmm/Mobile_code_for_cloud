@@ -22,8 +22,7 @@ namespace TeamFantasyMobileAppService
             config.EnableSystemDiagnosticsTracing();
 
             new MobileAppConfiguration()
-                .AddTablesWithEntityFramework()
-                .MapApiControllers()
+                .UseDefaultConfiguration()
                 .ApplyTo(config);
 
             // Use Entity Framework Code First to create database tables based on your DbContext

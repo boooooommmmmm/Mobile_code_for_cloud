@@ -30,25 +30,6 @@ namespace TeamFantasyMobileAppService.Controllers
             return Lookup(id);
         }
 
-        // Test: validation
-        public bool Validate(string text, bool comp)
-        {
-            bool b = false;
-            IQueryable<TodoItem> total = Query();
-            foreach (TodoItem item in total)
-            {
-                if (item.Text.Equals(text) && item.Complete.Equals(comp))
-                {
-                    b = true;
-                    break;
-                }
-            }
-
-            return b;
-        }
-
-
-
         // PATCH tables/TodoItem/48D68C86-6EA6-4C25-AA33-223FC9A27959
         public Task<TodoItem> PatchTodoItem(string id, Delta<TodoItem> patch)
         {
