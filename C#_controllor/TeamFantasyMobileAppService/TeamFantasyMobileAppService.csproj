@@ -161,6 +161,7 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DataObjects\Login.cs" />
     <Compile Include="DataObjects\TodoItem.cs" />
     <Compile Include="Migrations\201709261020149_TeamFantasy.cs" />
     <Compile Include="Migrations\201709261020149_TeamFantasy.Designer.cs">
