@@ -21,9 +21,9 @@ namespace TeamFantasyMobileAppService.Controllers
 
         public string Get(string send, string aaa)
         {
-            JObject json = JObject.Parse(send);
-            int age = (int)(json.GetValue("age"));
-            string name = (string)json.GetValue("name");
+            //JObject json = JObject.Parse(send);
+            //int age = (int)(json.GetValue("age"));
+            //string name = (string)json.GetValue("name");
             //Console.WriteLine("get request!===============>");
             return "using scound get function";
         }

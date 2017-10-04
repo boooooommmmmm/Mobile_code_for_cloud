@@ -10,9 +10,6 @@ namespace TeamFantasyMobileAppService.Controllers
     [MobileAppController]
     public class AccountController : ApiController
     {
-        // GET api/Test
-        public List<Account> accountTable = new List<Account>();
-
         public string Get(string email, string password)
         {
             init();
@@ -37,7 +34,7 @@ namespace TeamFantasyMobileAppService.Controllers
             accountTable.Add(new Account { Email = "123@gmail.com", Password = "123" });
             accountTable.Add(new Account { Email = "testAdminUser@gmail.com", Password = "AdminPassword" });
         }
-
+        public List<Account> accountTable = new List<Account>();
     }
 
 }
