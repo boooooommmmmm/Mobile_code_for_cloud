@@ -15,7 +15,7 @@ namespace TeamFantasyMobileAppService.Controllers
     public class StateDetectController : ApiController
     {
 
-        string drivingState = "dangerous";
+        
         string valueX;
         string valueY;
         string valueZ;
@@ -31,6 +31,9 @@ namespace TeamFantasyMobileAppService.Controllers
 
             try
             {
+
+                string drivingState = "";
+
                 JObject jsonO = JObject.Parse(send);
 
                 valueX = jsonO["result"]["x"].ToString();
