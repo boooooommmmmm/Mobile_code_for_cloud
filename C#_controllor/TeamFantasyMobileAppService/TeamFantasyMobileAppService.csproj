@@ -151,6 +151,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Account.cs" />
     <Compile Include="Controllers\ParseException.cs" />
+    <Compile Include="Controllers\StateDetectController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />

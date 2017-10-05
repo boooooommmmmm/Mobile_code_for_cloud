@@ -95,7 +95,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             }
         }
 
-        public static List<bool> getAccelerate(int column, int amount)
+        public static List<bool> getSafetyRecord(int column, int amount)
         {
             List<bool> list = getColumn(column);
             List<bool> result = new List<bool>();
@@ -106,5 +106,25 @@ namespace TeamFantasyMobileAppService.SimulateDB
             }
             return result;
         }
+
+
+
+
+
+
+        public static List<float>[] getAccelerate()
+        {
+            List<float>[] result = new List<float>[]
+            {
+                x,
+                y,
+                z
+            };
+            return result;
+        }
+
+
+
+
     }
 }
