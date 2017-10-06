@@ -164,8 +164,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TeamFantasyMobileAppContext.cs" />
-    <Compile Include="SimulateDB\PatternRecongnizor.cs" />
-    <Compile Include="SimulateDB\SimulateDB.cs" />
+    <Compile Include="SimulateDB\EyeTrackingTable.cs" />
+    <Compile Include="SimulateDB\EyeTrackingPatternRecognizor.cs" />
+    <Compile Include="SimulateDB\AcceleratePatternRecognizor.cs" />
+    <Compile Include="SimulateDB\AccelerateTable.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
