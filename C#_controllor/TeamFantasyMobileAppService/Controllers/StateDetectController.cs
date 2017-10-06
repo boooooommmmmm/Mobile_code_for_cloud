@@ -14,8 +14,7 @@ namespace TeamFantasyMobileAppService.Controllers
     [MobileAppController]
     public class StateDetectController : ApiController
     {
-
-        AcceleratePatternRecognizor recognizor = new AcceleratePatternRecognizor();
+            
 
         // GET api/StateDetect
         public string Get(string send)
@@ -24,12 +23,20 @@ namespace TeamFantasyMobileAppService.Controllers
             try
             {
                 recognizor.loadJson(send);
-                return recognizor.checkPatterns();
+                recognizor.checkPatterns();
+                return recognizor.getLog();
             }
             catch (ParseException pe)
             {
-                return "Failed!";
+                // return "Failed!";
+                return recognizor.getLog();
+            }
+            catch (Exception e)
+            {
+                return recognizor.getLog();
             }
         }
+
+        AcceleratePatternRecognizor recognizor = new AcceleratePatternRecognizor();
     }
-}
+}   

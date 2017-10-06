@@ -9,6 +9,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
 {
     public class AcceleratePatternRecognizor
     {
+
+        // for debugger
+        List<String> log = new List<String>();
+        
         // the id of user
         //          int id = -1;
 
@@ -44,6 +48,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
         public void loadJson(string json)
         {
+
+            // log.Add("Load Json");
+
+
             /// load new json object
             JObject jsonO = JObject.Parse(json);
             string value;
@@ -52,46 +60,127 @@ namespace TeamFantasyMobileAppService.SimulateDB
             value = value.Substring(1, value.Length - 2);
             float[] x = value.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
 
+
+            // log.Add("x loaded");
+
+
             value = jsonO["result"]["y"].ToString();
             value = value.Substring(1, value.Length - 2);
             float[] y = value.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
+
+            // log.Add("y loaded");
 
             value = jsonO["result"]["z"].ToString();
             value = value.Substring(1, value.Length - 2);
             float[] z = value.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
 
+            // log.Add("z loaded");
+
             value = jsonO["result"]["time"].ToString();
             value = value.Substring(1, value.Length - 2);
             string[] time = value.Split(',');
 
+            // log.Add("time loaded");
+
             AccelerateTable.store(time, x, y, z);
+
+
+            // log.Add("data stored");
+
         }
 
         // a json string to record whether the one or more dangerous patterns are matched 
         public string checkPatterns()
         {
+
+            // log.Add("creating json obj");
+
             JObject obj = new JObject();
             bool b = false;
+
             b = suddenStart();
+
+
+            log.Add("step 6");
+
+
             obj.Add("sudden_start", b);
+
+
+            log.Add("sudden start");
+
+
             b = suddenStop();
             obj.Add("sudden_stop", b);
+
+            log.Add("sudden stop");
+
+
             b = suddenSteer();
             obj.Add("sudden_steer", b);
+
+
+            log.Add("sudden steer");
+
             b = roughroad();
             obj.Add("rough_road", b);
+
+
+            log.Add("rough");
+
             return obj.ToString();
         }
         
         // check if the vihecle suddenly accelerates
         bool suddenStart()
         {
+
+
+            log.Add("step 1");
+
+
+
             bool result = false;
             int preAppend = (int)(SUDDEN_START_DURATION * RATE);
+
+
+            log.Add("pre append: " + preAppend);
+
+
             int amount = preAppend + NUMBER_OF_RECORDS;
-            List<float> x = AccelerateTable.getX(amount);
+
+
+            log.Add("amount: " + preAppend);
+
+
+            List<float> x = null;
+
+            try
+            {
+                x = AccelerateTable.getX(amount);
+            }
+            catch (Exception e)
+            {
+                log.Add(AccelerateTable.getLog());
+            }
+                
+
+
+
+            log.Add("x: " + x.ToString());
+
             List<bool> record = new List<bool>(x.Count);
+            log.Add(AccelerateTable.getLog());
+
+            log.Add("record: " + record.ToString());
+
+
             int start = 0;
+
+
+            log.Add("step 2");
+
+
             for (int i=0; i<x.Count; i++)
             { 
                 if (x[i] < SUDDEN_START_ACCELERATE)
@@ -108,6 +197,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+
+            log.Add("step 3");
+
+
             if (amount - start > SUDDEN_START_DURATION)
             {
                 for (int j = start; j < amount; j++)
@@ -117,7 +210,19 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+
+
+            log.Add("step 4");
+
+
             AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_ACCELERATE, record, preAppend);
+
+
+
+
+            log.Add("step 5");
+
+
             return result;
         }
 
@@ -238,5 +343,23 @@ namespace TeamFantasyMobileAppService.SimulateDB
             AccelerateTable.storePatternResults(AccelerateTable.ROUGH_ROAD, record, preAppend);
             return result;
         }
+
+        // for debug only
+        public string getLog()
+        {
+            if (log.Count == 0)
+            {
+                return "no log!";
+            }
+
+            string result = log[0];
+            for (int i =1; i<log.Count; i++)
+            {
+                result += "\\n" + log[i];
+            }
+
+            return result;
+        } 
+
     }
 }

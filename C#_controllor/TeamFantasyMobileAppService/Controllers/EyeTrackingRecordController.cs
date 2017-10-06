@@ -12,8 +12,7 @@ namespace TeamFantasyMobileAppService.Controllers
     public class EyeTrackingRecordController : ApiController
     {
 
-        EyeTrackingRecognizor recognizor = new EyeTrackingRecognizor();
-
+       
         // GET api/EyeTrackingRecord
         public string Get(string send)
         {
@@ -27,5 +26,7 @@ namespace TeamFantasyMobileAppService.Controllers
                 return "Failed!";
             }
         }
+
+        EyeTrackingRecognizor recognizor = new EyeTrackingRecognizor();
     }
 }
