@@ -49,7 +49,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
         //public const float SUDDEN_STEER_ACCELERATE = 5.00f;
         //public const float SUDDEN_STEER_DURATION = 1.0f;
         public const float SUDDEN_STEER_ACCELERATE = 6.0f;
-        public const float SUDDEN_STEER_DURATION = 0.2f;
+        public const float SUDDEN_STEER_DURATION = 0.5f;
 
         // for bumps
             // the commented value is for real measurement
