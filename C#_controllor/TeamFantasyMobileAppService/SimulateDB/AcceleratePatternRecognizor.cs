@@ -96,12 +96,12 @@ namespace TeamFantasyMobileAppService.SimulateDB
             for (int i=0; i<z.Length; i++)
             {
                 z[i] = -z[i];
-                y[i] = Math.Abs(y[i]);
-                y[i] -= 9.8f;
+                x[i] = Math.Abs(y[i]);
+                x[i] -= 9.8f;
             }
 
 
-            AccelerateTable.store(time, z, x, y);
+            AccelerateTable.store(time, z, y, x);
 
             log.Add("Loading Json Succeeded");
         }
