@@ -54,9 +54,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // for bumps
             // the commented value is for real measurement
             // the uncommented value is for demonstration
-        //public const float BUMPS_ACCELERATE = 1.00f;
+        //public const float BUMPS_ACCELERATE = 5.00f;
         //public const float BUMPS_DURATION = 5.0f;
-        public const float BUMPS_ACCELERATE = 4.0f;
+        public const float BUMPS_ACCELERATE = 8.0f;
         public const float BUMPS_DURATION = 0.8f;
 
         public AcceleratePatternRecognizor()
@@ -96,8 +96,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
             for (int i=0; i<z.Length; i++)
             {
                 z[i] = -z[i];
-                x[i] = Math.Abs(x[i]);
-                x[i] -= 9.8f;
+                y[i] = Math.Abs(y[i]);
+                y[i] -= 9.8f;
             }
 
 
