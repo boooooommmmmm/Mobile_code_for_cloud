@@ -173,8 +173,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                         for (int j=start; j<i; j++)
                         {
                             record[j] = true;
-                            result = true;
                         }
+                        result = true;
                     }
                     start = i + 1;
                 }
@@ -188,8 +188,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 for (int j = start; j < amount; j++)
                 {
                     record[j] = true;
-                    result = true;
                 }
+                result = true;
             }
 
             log.Add("[sudden start] Booleans computed");
@@ -224,8 +224,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                         for (int j = start; j < i; j++)
                         {
                             record[j] = true;
-                            result = true;
                         }
+                        result = true;
                     }
 
                     start = i + 1;
@@ -240,8 +240,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 for (int j = start; j < amount; j++)
                 {
                     record[j] = true;
-                    result = true;
                 }
+                result = true;
             }
 
             log.Add("[sudden stop] Booleans computed");
@@ -276,10 +276,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
                         for (int j = start; j < i; j++)
                         {
                             record[j] = true;
-                            result = true;
                         }
+                        result = true;
                     }
-
                     start = i + 1;
                 }
             }
@@ -292,8 +291,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 for (int j = start; j < amount; j++)
                 {
                     record[j] = true;
-                    result = true;
                 }
+                result = true;
             }
 
             log.Add("[sudden steer] Booleans computed");
@@ -329,8 +328,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                         for (int j = start; j < i; j++)
                         {
                             record[j] = true;
-                            result = true;
                         }
+                        result = true;
                     }
 
                     start = i + 1;
@@ -345,8 +344,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 for (int j = start; j < amount; j++)
                 {
                     record[j] = true;
-                    result = true;
                 }
+                result = true;
             }
 
             log.Add("[roughness] Booleans computed");
