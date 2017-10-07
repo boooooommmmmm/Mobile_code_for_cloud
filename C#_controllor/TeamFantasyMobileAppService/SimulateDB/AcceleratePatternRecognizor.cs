@@ -31,8 +31,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
             // the uncommented value is for demonstration
         //public const float SUDDEN_START_ACCELERATE = 5.00f;
         //public const float SUDDEN_START_DURATION = 2.0f;
-        public const float SUDDEN_START_ACCELERATE = 4.0f;
-        public const float SUDDEN_START_DURATION = 0.4f;
+        public const float SUDDEN_START_ACCELERATE = 6.0f;
+        public const float SUDDEN_START_DURATION = 0.2f;
 
 
         // for sudden stop
@@ -40,24 +40,24 @@ namespace TeamFantasyMobileAppService.SimulateDB
             // the uncommented value is for demonstration
         //public const float SUDDEN_STOP_ACCELERATE = -5.00f;
         //public const float SUDDEN_STOP_DURATION = 2.0f;
-        public const float SUDDEN_STOP_ACCELERATE = -4.0f;
-        public const float SUDDEN_STOP_DURATION = 0.4f;
+        public const float SUDDEN_STOP_ACCELERATE = -6.0f;
+        public const float SUDDEN_STOP_DURATION = 0.2f;
 
         // for sudden steering
             // the commented value is for real measurement
             // the uncommented value is for demonstration
         //public const float SUDDEN_STEER_ACCELERATE = 5.00f;
         //public const float SUDDEN_STEER_DURATION = 1.0f;
-        public const float SUDDEN_STEER_ACCELERATE = 4.0f;
-        public const float SUDDEN_STEER_DURATION = 0.3f;
+        public const float SUDDEN_STEER_ACCELERATE = 6.0f;
+        public const float SUDDEN_STEER_DURATION = 0.2f;
 
         // for bumps
             // the commented value is for real measurement
             // the uncommented value is for demonstration
         //public const float BUMPS_ACCELERATE = 1.00f;
         //public const float BUMPS_DURATION = 5.0f;
-        public const float BUMPS_ACCELERATE = 1.5f;
-        public const float BUMPS_DURATION = 1.5f;
+        public const float BUMPS_ACCELERATE = 4.0f;
+        public const float BUMPS_DURATION = 0.8f;
 
         public AcceleratePatternRecognizor()
         {
