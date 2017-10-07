@@ -169,7 +169,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             { 
                 if ( x[i] < SUDDEN_START_ACCELERATE)
                 {
-                    if (i-start > SUDDEN_START_DURATION)
+                    if (i-start > patternLength)
                     {
                         for (int j=start; j<i; j++)
                         {
@@ -212,7 +212,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             {
                 if ( x[i] > SUDDEN_STOP_ACCELERATE)
                 {
-                    if (i - start > SUDDEN_START_DURATION)
+                    if (i - start > patternLength)
                     {
                         for (int j = start; j < i; j++)
                         {
@@ -252,7 +252,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             {
                 if (y[i] > - SUDDEN_STEER_ACCELERATE && y[i] < SUDDEN_STEER_ACCELERATE)
                 {
-                    if (i - start > SUDDEN_STEER_DURATION)
+                    if (i - start > patternLength)
                     {
                         for (int j = start; j < i; j++)
                         {
@@ -307,7 +307,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             }
 
             amount = record.Count;
-            if (amount - start > BUMPS_DURATION)
+            if (amount - start > patternLength)
             {
                 for (int j = start; j < amount; j++)
                 {
