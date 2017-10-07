@@ -269,7 +269,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             int start = 0;
             for (int i = 0; i < y.Count; i++)
             {
-                if (y[i] > - SUDDEN_STEER_ACCELERATE && y[i] < SUDDEN_STEER_ACCELERATE)
+                if (y[i] > (- SUDDEN_STEER_ACCELERATE) && y[i] < SUDDEN_STEER_ACCELERATE)
                 {
                     if (i - start > patternLength)
                     {
