@@ -23,6 +23,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // how many data records the app sends every time
         public const int NUMBER_OF_RECORDS = (int) (RATE * SECONDS);
 
+        public const float GRAVITY_CONST = 9.8f;
 
         // the thresholds for critical patterns    
         // for sudden start
@@ -76,7 +77,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             value = jsonO["result"]["x"].ToString();
             value = value.Substring(1, value.Length - 2);
             float[] x = value.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
-            
+
             value = jsonO["result"]["y"].ToString();
             value = value.Substring(1, value.Length - 2);
             float[] y = value.Split(',').Select(n => float.Parse(n, CultureInfo.InvariantCulture.NumberFormat)).ToArray();
@@ -89,7 +90,18 @@ namespace TeamFantasyMobileAppService.SimulateDB
             value = value.Substring(1, value.Length - 2);
             string[] time = value.Split(',');
             
-            AccelerateTable.store(time, x, y, z);
+            // the z sent from mobile is actually corresponding to x-dim, but the order is inversed
+            // the y sent from mobile is actually corresponding to y-dim
+            // the x sent from mobile is actually corresponding to z-dim
+            for (int i=0; i<z.Length; i++)
+            {
+                z[i] = -z[i];
+                x[i] = Math.Abs(x[i]);
+                x[i] -= 9.8f;
+            }
+
+
+            AccelerateTable.store(time, z, y, x);
 
             log.Add("Loading Json Succeeded");
         }
@@ -140,14 +152,14 @@ namespace TeamFantasyMobileAppService.SimulateDB
             bool result = false;
             int preAppend = (int)(SUDDEN_START_DURATION * RATE);
             int amount = preAppend + NUMBER_OF_RECORDS;
-            List<float> z = AccelerateTable.getZ(amount);
+            List<float> x = AccelerateTable.getX(amount);
             
-            List<bool> record = new List<bool>(z.Count);
+            List<bool> record = new List<bool>(x.Count);
             int start = 0;
             
-            for (int i=0; i<z.Count; i++)
+            for (int i=0; i<x.Count; i++)
             { 
-                if ( -z[i] < SUDDEN_START_ACCELERATE)
+                if ( x[i] < SUDDEN_START_ACCELERATE)
                 {
                     if (i-start > SUDDEN_START_DURATION)
                     {
@@ -181,12 +193,12 @@ namespace TeamFantasyMobileAppService.SimulateDB
             bool result = false;
             int preAppend = (int)(SUDDEN_STOP_DURATION * RATE);
             int amount = preAppend + NUMBER_OF_RECORDS;
-            List<float> z = AccelerateTable.getZ(amount);
-            List<bool> record = new List<bool>(z.Count);
+            List<float> x = AccelerateTable.getX(amount);
+            List<bool> record = new List<bool>(x.Count);
             int start = 0;
-            for (int i = 0; i < z.Count; i++)
+            for (int i = 0; i < x.Count; i++)
             {
-                if ( -z[i] > SUDDEN_STOP_ACCELERATE)
+                if ( x[i] > SUDDEN_STOP_ACCELERATE)
                 {
                     if (i - start > SUDDEN_START_DURATION)
                     {
@@ -262,12 +274,12 @@ namespace TeamFantasyMobileAppService.SimulateDB
             bool result = false;
             int preAppend = (int)(BUMPS_DURATION* RATE);
             int amount = preAppend + NUMBER_OF_RECORDS;
-            List<float> x = AccelerateTable.getX(amount);
-            List<bool> record = new List<bool>(x.Count);
+            List<float> z = AccelerateTable.getZ(amount);
+            List<bool> record = new List<bool>(z.Count);
             int start = 0;
-            for (int i = 0; i < x.Count; i++)
+            for (int i = 0; i < z.Count; i++)
             {
-                if (x[i] > -BUMPS_ACCELERATE && x[i] < BUMPS_ACCELERATE)
+                if (z[i] > -BUMPS_ACCELERATE && z[i] < BUMPS_ACCELERATE)
                 {
                     if (i - start > BUMPS_DURATION)
                     {
