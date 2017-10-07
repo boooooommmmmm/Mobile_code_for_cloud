@@ -96,7 +96,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             for (int i=0; i<z.Length; i++)
             {
                 z[i] = -z[i];
-                x[i] = Math.Abs(y[i]);
+                x[i] = Math.Abs(x[i]);
                 x[i] -= 9.8f;
             }
 
