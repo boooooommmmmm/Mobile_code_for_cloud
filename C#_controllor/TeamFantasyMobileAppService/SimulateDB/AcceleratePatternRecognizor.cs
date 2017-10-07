@@ -148,12 +148,20 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // check if the vihecle suddenly accelerates
         bool suddenStart()
         {
-            
+
+            log.Add("[sudden start] Initialize");
+
             bool result = false;
             int preAppend = (int)(SUDDEN_START_DURATION * RATE);
+
             int amount = preAppend + NUMBER_OF_RECORDS;
+
+            log.Add("[sudden start] amount = " + amount);
+
             List<float> x = AccelerateTable.getX(amount);
-            
+
+            log.Add("[sudden start] x count = " + x.Count);
+
             List<bool> record = new List<bool>(x.Count);
             int start = 0;
             
@@ -172,8 +180,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                     start = i + 1;
                 }
             }
-            
-            amount = record.Count;
+
+            log.Add("[sudden start] Loop one finished");
+
+            amount = x.Count;
             if (amount - start > SUDDEN_START_DURATION)
             {
                 for (int j = start; j < amount; j++)
@@ -182,8 +192,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                     result = true;
                 }
             }
+
+            log.Add("[sudden start] Booleans computed");
+
             AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_ACCELERATE, record, preAppend);
-            
             return result;
         }
 
