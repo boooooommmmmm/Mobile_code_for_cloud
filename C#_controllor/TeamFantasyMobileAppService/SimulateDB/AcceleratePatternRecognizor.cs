@@ -152,9 +152,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
             log.Add("[sudden start] Initialize");
 
             bool result = false;
-            int preAppend = (int)(SUDDEN_START_DURATION * RATE);
+            int patternLength = (int)(SUDDEN_START_DURATION * RATE);
 
-            int amount = preAppend + NUMBER_OF_RECORDS;
+            int amount = patternLength + NUMBER_OF_RECORDS;
 
             log.Add("[sudden start] amount = " + amount);
 
@@ -184,7 +184,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             log.Add("[sudden start] Loop one finished");
 
             amount = x.Count;
-            if (amount - start > SUDDEN_START_DURATION)
+            if (amount - start > patternLength)
             {
                 for (int j = start; j < amount; j++)
                 {
@@ -195,7 +195,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             log.Add("[sudden start] Booleans computed");
 
-            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_ACCELERATE, record, preAppend);
+            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_ACCELERATE, record, patternLength);
             return result;
         }
 
@@ -203,8 +203,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
         bool suddenStop()
         {
             bool result = false;
-            int preAppend = (int)(SUDDEN_STOP_DURATION * RATE);
-            int amount = preAppend + NUMBER_OF_RECORDS;
+            int patternLength = (int)(SUDDEN_STOP_DURATION * RATE);
+            int amount = patternLength + NUMBER_OF_RECORDS;
             List<float> x = AccelerateTable.getX(amount);
             List<bool> record = new List<bool>(x.Count);
             int start = 0;
@@ -226,7 +226,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             }
 
             amount = record.Count;
-            if (amount - start > SUDDEN_STOP_DURATION)
+            if (amount - start > patternLength)
             {
                 for (int j = start; j < amount; j++)
                 {
@@ -235,7 +235,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
-            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STOP, record, preAppend);
+            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STOP, record, patternLength);
             return result;
         }
 
@@ -243,8 +243,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
         bool suddenSteer()
         {
             bool result = false;
-            int preAppend = (int)(SUDDEN_STEER_DURATION * RATE);
-            int amount = preAppend + NUMBER_OF_RECORDS;
+            int patternLength = (int)(SUDDEN_STEER_DURATION * RATE);
+            int amount = patternLength + NUMBER_OF_RECORDS;
             List<float> y = AccelerateTable.getY(amount);
             List<bool> record = new List<bool>(y.Count);
             int start = 0;
@@ -266,7 +266,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             }
 
             amount = record.Count;
-            if (amount - start > SUDDEN_STEER_DURATION)
+            if (amount - start > patternLength)
             {
                 for (int j = start; j < amount; j++)
                 {
@@ -275,7 +275,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
-            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STEER, record, preAppend);
+            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STEER, record, patternLength);
             return result;
         }
 
@@ -284,8 +284,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
         bool roughroad()
         {
             bool result = false;
-            int preAppend = (int)(BUMPS_DURATION* RATE);
-            int amount = preAppend + NUMBER_OF_RECORDS;
+            int patternLength = (int)(BUMPS_DURATION* RATE);
+            int amount = patternLength + NUMBER_OF_RECORDS;
             List<float> z = AccelerateTable.getZ(amount);
             List<bool> record = new List<bool>(z.Count);
             int start = 0;
@@ -293,7 +293,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             {
                 if (z[i] > -BUMPS_ACCELERATE && z[i] < BUMPS_ACCELERATE)
                 {
-                    if (i - start > BUMPS_DURATION)
+                    if (i - start > patternLength)
                     {
                         for (int j = start; j < i; j++)
                         {
@@ -316,7 +316,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
-            AccelerateTable.storePatternResults(AccelerateTable.ROUGH_ROAD, record, preAppend);
+            AccelerateTable.storePatternResults(AccelerateTable.ROUGH_ROAD, record, patternLength);
             return result;
         }
 
