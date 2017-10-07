@@ -19,7 +19,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // recording rate per second
         public const int RATE = 10;
         // how many seconds the server receives data from the app
-        public const float SECONDS = 1.5f;
+        public const float SECONDS = 2.0f;
         // how many data records the app sends every time
         public const int NUMBER_OF_RECORDS = (int) (RATE * SECONDS);
 
