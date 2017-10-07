@@ -162,14 +162,28 @@ namespace TeamFantasyMobileAppService.SimulateDB
             log.Add("[sudden start] x count = " + x.Count);
 
             List<bool> record = new List<bool>(x.Count);
+
+            log.Add("[sudden start] record count = " + record.Count);
+
             int start = 0;
-            
-            for (int i=0; i<x.Count; i++)
-            { 
+
+            log.Add("[sudden start] Loop one ");
+
+            for (int i = 0; i < x.Count; i++)
+            {
+
+                log.Add("round: " + i);
+                log.Add("start = " + start);
+                log.Add("x_i = " + x[i]);
+
                 if ( x[i] < SUDDEN_START_ACCELERATE)
                 {
+
+                    log.Add("in threshold");
+
                     if (i-start > patternLength)
                     {
+                        log.Add("long enough");
                         for (int j=start; j<i; j++)
                         {
                             record[j] = true;
@@ -177,6 +191,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                         result = true;
                     }
                     start = i + 1;
+                }
+                else
+                {
+                    log.Add("out of threshold");
                 }
             }
 
