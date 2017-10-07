@@ -23,7 +23,8 @@ namespace TeamFantasyMobileAppService.Controllers
             try
             {
                 recognizor.loadJson(send);
-                return recognizor.checkPatterns();
+                return AccelerateTable.getAccelerates();
+                //return recognizor.checkPatterns();
             }
             catch (ParseException pe)
             {
