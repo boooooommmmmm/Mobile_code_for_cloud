@@ -84,12 +84,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
         {
             List<float> result = new List<float>();
             
-            int start = time.Count - amount;
+            int start = x.Count - amount;
             if (start < 0)
-            {
-                amount += start;
-                start = 0;
-            }
             {
                 amount += start;
                 start = 0;
@@ -112,12 +108,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
         public static List<float> getY(int amount)
         {
             List<float> result = new List<float>();
-            int start = time.Count - amount;
+            int start = y.Count - amount;
             if (start < 0)
-            {
-                amount += start;
-                start = 0;
-            }
             {
                 amount += start;
                 start = 0;
@@ -139,12 +131,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
         public static List<float> getZ(int amount)
         {
             List<float> result = new List<float>();
-            int start = time.Count - amount;
+            int start = z.Count - amount;
             if (start < 0)
-            {
-                amount += start;
-                start = 0;
-            }
             {
                 amount += start;
                 start = 0;
