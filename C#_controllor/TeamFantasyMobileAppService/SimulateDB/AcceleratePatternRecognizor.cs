@@ -19,9 +19,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // recording rate per second
         public const int RATE = 10;
         // how many seconds the server receives data from the app
-        public const int SECONDS = 10;
+        public const float SECONDS = 1.5f;
         // how many data records the app sends every time
-        public const int NUMBER_OF_RECORDS = RATE * SECONDS;
+        public const int NUMBER_OF_RECORDS = (int) (RATE * SECONDS);
 
 
         // the thresholds for critical patterns    
@@ -134,25 +134,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // check if the vihecle suddenly accelerates
         bool suddenStart()
         {
-
-
-            log.Add("step 1");
-
-
-
+            
             bool result = false;
             int preAppend = (int)(SUDDEN_START_DURATION * RATE);
-
-
-            log.Add("pre append: " + preAppend);
-
-
             int amount = preAppend + NUMBER_OF_RECORDS;
-
-
-            log.Add("amount: " + preAppend);
-
-
             List<float> x = null;
 
             try
@@ -200,7 +185,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             log.Add("step 3");
 
-
+            amount = record.Count;
             if (amount - start > SUDDEN_START_DURATION)
             {
                 for (int j = start; j < amount; j++)
@@ -252,6 +237,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            amount = record.Count;
             if (amount - start > SUDDEN_STOP_DURATION)
             {
                 for (int j = start; j < amount; j++)
@@ -291,6 +277,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            amount = record.Count;
             if (amount - start > SUDDEN_STEER_DURATION)
             {
                 for (int j = start; j < amount; j++)
@@ -331,6 +318,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            amount = record.Count;
             if (amount - start > BUMPS_DURATION)
             {
                 for (int j = start; j < amount; j++)
@@ -355,7 +343,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             string result = log[0];
             for (int i =1; i<log.Count; i++)
             {
-                result += "\\n" + log[i];
+                result += "   " + log[i];
             }
 
             return result;

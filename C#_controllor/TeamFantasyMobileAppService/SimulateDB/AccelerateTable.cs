@@ -82,13 +82,13 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
 
             List<float> result = new List<float>();
-
-
-
-
-
+            
             int start = time.Count - amount;
-            if (start < 0) start = 0;
+            if (start < 0)
+            {
+                amount += start;
+                start = 0;
+            }
 
 
             log.Add("start: " + start);
@@ -115,7 +115,11 @@ namespace TeamFantasyMobileAppService.SimulateDB
         {
             List<float> result = new List<float>();
             int start = time.Count - amount;
-            if (start < 0) start = 0;
+            if (start < 0)
+            {
+                amount += start;
+                start = 0;
+            }
             for (int i = 0; i < amount; i++)
             {
                 result.Add(y[start + i]);
@@ -134,7 +138,11 @@ namespace TeamFantasyMobileAppService.SimulateDB
         {
             List<float> result = new List<float>();
             int start = time.Count - amount;
-            if (start < 0) start = 0;
+            if (start < 0)
+            {
+                amount += start;
+                start = 0;
+            }
             for (int i = 0; i < amount; i++)
             {
                 result.Add(z[start + i]);
@@ -180,7 +188,11 @@ namespace TeamFantasyMobileAppService.SimulateDB
             List<bool> list = getColumn(column);
             List<bool> result = new List<bool>();
             int start = list.Count - amount;
-            if (start < 0) start = 0;
+            if (start < 0)
+            {
+                amount += start;
+                start = 0;
+            }
             for (int i = 0; i < amount; i++)
             {
                 result.Add(list[start + i]);
@@ -204,7 +216,11 @@ namespace TeamFantasyMobileAppService.SimulateDB
             else
             {
                 int start = list.Count - amount;
-                if (start < 0) start = 0;
+                if (start < 0)
+                {
+                    amount += start;
+                    start = 0;
+                }
                 for (int i=0; i< amount; i++)
                 {
                     list[start + i] |= pattern[i];
@@ -228,7 +244,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             string result = log[0];
             for (int i = 1; i < log.Count; i++)
             {
-                result += "\\n" + log[i];
+                result += "   " + log[i];
             }
 
             return result;
