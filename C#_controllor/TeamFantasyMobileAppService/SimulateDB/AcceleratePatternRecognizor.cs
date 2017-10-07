@@ -153,7 +153,6 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             bool result = false;
             int patternLength = (int)(SUDDEN_START_DURATION * RATE);
-
             int amount = patternLength + NUMBER_OF_RECORDS;
 
             log.Add("[sudden start] amount = " + amount);
@@ -202,10 +201,18 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // check if the vihecle suddenly stops
         bool suddenStop()
         {
+            log.Add("[sudden stop] Initialize");
+
             bool result = false;
             int patternLength = (int)(SUDDEN_STOP_DURATION * RATE);
             int amount = patternLength + NUMBER_OF_RECORDS;
+
+            log.Add("[sudden stop] amount = " + amount);
+
             List<float> x = AccelerateTable.getX(amount);
+
+            log.Add("[sudden stop] x count = " + x.Count);
+
             List<bool> record = new List<bool>(x.Count);
             int start = 0;
             for (int i = 0; i < x.Count; i++)
@@ -225,6 +232,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            log.Add("[sudden stop] Loop one finished");
+
             amount = record.Count;
             if (amount - start > patternLength)
             {
@@ -235,6 +244,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            log.Add("[sudden stop] Booleans computed");
+
             AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STOP, record, patternLength);
             return result;
         }
@@ -242,10 +253,18 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // check if the vihecle suddenly steers
         bool suddenSteer()
         {
+            log.Add("[sudden steer] Initialize");
+
             bool result = false;
             int patternLength = (int)(SUDDEN_STEER_DURATION * RATE);
             int amount = patternLength + NUMBER_OF_RECORDS;
+
+            log.Add("[sudden steer] amount = " + amount);
+
             List<float> y = AccelerateTable.getY(amount);
+
+            log.Add("[sudden steer] y count = " + y.Count);
+
             List<bool> record = new List<bool>(y.Count);
             int start = 0;
             for (int i = 0; i < y.Count; i++)
@@ -265,6 +284,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            log.Add("[sudden steer] Loop one finished");
+
             amount = record.Count;
             if (amount - start > patternLength)
             {
@@ -275,6 +296,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            log.Add("[sudden steer] Booleans computed");
+
             AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STEER, record, patternLength);
             return result;
         }
@@ -283,10 +306,18 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // check if the vihecle is on a rough road
         bool roughroad()
         {
+            log.Add("[roughness] Initialize");
+
             bool result = false;
             int patternLength = (int)(BUMPS_DURATION* RATE);
             int amount = patternLength + NUMBER_OF_RECORDS;
+
+            log.Add("[roughness] amount = " + amount);
+
             List<float> z = AccelerateTable.getZ(amount);
+
+            log.Add("[roughness] z count = " + z.Count);
+
             List<bool> record = new List<bool>(z.Count);
             int start = 0;
             for (int i = 0; i < z.Count; i++)
@@ -306,6 +337,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 }
             }
 
+            log.Add("[roughness] Loop one finished");
+
             amount = record.Count;
             if (amount - start > patternLength)
             {
@@ -315,6 +348,8 @@ namespace TeamFantasyMobileAppService.SimulateDB
                     result = true;
                 }
             }
+
+            log.Add("[roughness] Booleans computed");
 
             AccelerateTable.storePatternResults(AccelerateTable.ROUGH_ROAD, record, patternLength);
             return result;
