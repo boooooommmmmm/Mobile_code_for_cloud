@@ -292,10 +292,14 @@ namespace TeamFantasyMobileAppService.SimulateDB
                     log.Add("true");
                     if (i - start > patternLength)
                     {
+                        log.Add("enter sub loop");
+
                         for (int j = start; j < i; j++)
                         {
                             record[j] = true;
                         }
+
+                        log.Add("sub loop finished");
                         result = true;
                     }
                     start = i + 1;
