@@ -65,7 +65,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
         public void loadJson(string json)
         {
-            
+
+            log.Clear();
+            log.Add("Loading Json");
+
             /// load new json object
             JObject jsonO = JObject.Parse(json);
             string value;
@@ -87,26 +90,46 @@ namespace TeamFantasyMobileAppService.SimulateDB
             string[] time = value.Split(',');
             
             AccelerateTable.store(time, x, y, z);
+
+            log.Add("Loading Json Succeeded");
         }
 
         // a json string to record whether the one or more dangerous patterns are matched 
         public string checkPatterns()
         {
+
+            log.Add("Check patterns:");
+
             JObject obj = new JObject();
             bool b = false;
 
+
+            log.Add("Check sudden start");
+
             b = suddenStart();
             obj.Add("sudden_start", b);
-            
+
+            log.Add("Succeed");
+            log.Add("Check sudden stop");
+
             b = suddenStop();
             obj.Add("sudden_stop", b);
-            
+
+            log.Add("Succeed");
+            log.Add("Check sudden steer");
+
             b = suddenSteer();
             obj.Add("sudden_steer", b);
-            
+
+            log.Add("Succeed");
+            log.Add("Check rough road");
+
             b = roughroad();
             obj.Add("rough_road", b);
-            
+
+            log.Add("Succeed");
+            log.Add("Check finished");
+
             return obj.ToString();
         }
         
