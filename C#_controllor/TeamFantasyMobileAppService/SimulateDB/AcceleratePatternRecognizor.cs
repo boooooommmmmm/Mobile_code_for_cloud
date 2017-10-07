@@ -161,7 +161,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             //log.Add("[sudden start] x count = " + x.Count);
 
-            List<bool> record = new List<bool>(x.Count);
+            //List<bool> record = new List<bool>(x.Count);
 
             //log.Add("[sudden start] record count = " + record.Count);
 
@@ -181,10 +181,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                     if (i-start > patternLength)
                     {
                         //log.Add("long enough");
-                        for (int j=start; j<i; j++)
-                        {
-                            record[j] = true;
-                        }
+                        //for (int j=start; j<i; j++)
+                        //{
+                        //    record[j] = true;
+                        //}
                         result = true;
                     }
                     start = i + 1;
@@ -200,16 +200,16 @@ namespace TeamFantasyMobileAppService.SimulateDB
             amount = x.Count;
             if (amount - start > patternLength)
             {
-                for (int j = start; j < amount; j++)
-                {
-                    record[j] = true;
-                }
+                //for (int j = start; j < amount; j++)
+                //{
+                //    record[j] = true;
+                //}
                 result = true;
             }
 
             log.Add("[sudden start] Booleans computed");
 
-            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_ACCELERATE, record, patternLength);
+            //AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_ACCELERATE, record, patternLength);
             return result;
         }
 
@@ -228,7 +228,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             log.Add("[sudden stop] x count = " + x.Count);
 
-            List<bool> record = new List<bool>(x.Count);
+            //List<bool> record = new List<bool>(x.Count);
             int start = 0;
             for (int i = 0; i < x.Count; i++)
             {
@@ -238,10 +238,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 {
                     if (i - start > patternLength)
                     {
-                        for (int j = start; j < i; j++)
-                        {
-                            record[j] = true;
-                        }
+                        //for (int j = start; j < i; j++)
+                        //{
+                        //    record[j] = true;
+                        //}
                         result = true;
                     }
 
@@ -251,19 +251,19 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             log.Add("[sudden stop] Loop one finished");
 
-            amount = record.Count;
+            amount = x.Count;
             if (amount - start > patternLength)
             {
-                for (int j = start; j < amount; j++)
-                {
-                    record[j] = true;
-                }
+                //for (int j = start; j < amount; j++)
+                //{
+                //    record[j] = true;
+                //}
                 result = true;
             }
 
             log.Add("[sudden stop] Booleans computed");
 
-            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STOP, record, patternLength);
+            //AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STOP, record, patternLength);
             return result;
         }
 
@@ -282,49 +282,42 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             log.Add("[sudden steer] y count = " + y.Count);
 
-            List<bool> record = new List<bool>(y.Count);
+            //List<bool> record = new List<bool>(y.Count);
             int start = 0;
             for (int i = 0; i < y.Count; i++)
             {
                 log.Add("y[" + i + "]= " + y[i]);
                 if (y[i] > (- SUDDEN_STEER_ACCELERATE) && y[i] < SUDDEN_STEER_ACCELERATE)
                 {
-                    log.Add("true");
                     if (i - start > patternLength)
                     {
-                        log.Add("enter sub loop");
 
-                        for (int j = start; j < i; j++)
-                        {
-                            record[j] = true;
-                        }
-
-                        log.Add("sub loop finished");
+                        //for (int j = start; j < i; j++)
+                        //{
+                        //    record[j] = true;
+                        //}
+                        
                         result = true;
                     }
                     start = i + 1;
-                }
-                else
-                {
-                    log.Add("false");
                 }
             }
 
             log.Add("[sudden steer] Loop one finished");
 
-            amount = record.Count;
+            amount = y.Count;
             if (amount - start > patternLength)
             {
-                for (int j = start; j < amount; j++)
-                {
-                    record[j] = true;
-                }
+                //for (int j = start; j < amount; j++)
+                //{
+                //    record[j] = true;
+                //}
                 result = true;
             }
 
             log.Add("[sudden steer] Booleans computed");
 
-            AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STEER, record, patternLength);
+            //AccelerateTable.storePatternResults(AccelerateTable.SUDDEN_STEER, record, patternLength);
             return result;
         }
 
@@ -344,7 +337,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             log.Add("[roughness] z count = " + z.Count);
 
-            List<bool> record = new List<bool>(z.Count);
+            //List<bool> record = new List<bool>(z.Count);
             int start = 0;
             for (int i = 0; i < z.Count; i++)
             {
@@ -353,10 +346,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 {
                     if (i - start > patternLength)
                     {
-                        for (int j = start; j < i; j++)
-                        {
-                            record[j] = true;
-                        }
+                        //for (int j = start; j < i; j++)
+                        //{
+                        //    record[j] = true;
+                        //}
                         result = true;
                     }
 
@@ -366,19 +359,19 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             log.Add("[roughness] Loop one finished");
 
-            amount = record.Count;
+            amount = z.Count;
             if (amount - start > patternLength)
             {
-                for (int j = start; j < amount; j++)
-                {
-                    record[j] = true;
-                }
+                //for (int j = start; j < amount; j++)
+                //{
+                //    record[j] = true;
+                //}
                 result = true;
             }
 
             log.Add("[roughness] Booleans computed");
 
-            AccelerateTable.storePatternResults(AccelerateTable.ROUGH_ROAD, record, patternLength);
+            //AccelerateTable.storePatternResults(AccelerateTable.ROUGH_ROAD, record, patternLength);
             return result;
         }
 
