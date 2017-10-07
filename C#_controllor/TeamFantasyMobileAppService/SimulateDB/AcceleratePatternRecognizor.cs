@@ -26,20 +26,37 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
         // the thresholds for critical patterns    
         // for sudden start
-        public const float SUDDEN_START_ACCELERATE = 5.00f;
-        public const float SUDDEN_START_DURATION = 2.0f;
+            // the commented value is for real measurement
+            // the uncommented value is for demonstration
+        //public const float SUDDEN_START_ACCELERATE = 5.00f;
+        //public const float SUDDEN_START_DURATION = 2.0f;
+        public const float SUDDEN_START_ACCELERATE = 4.0f;
+        public const float SUDDEN_START_DURATION = 0.4f;
+
 
         // for sudden stop
-        public const float SUDDEN_STOP_ACCELERATE = -5.00f;
-        public const float SUDDEN_STOP_DURATION = 2.0f;
+            // the commented value is for real measurement
+            // the uncommented value is for demonstration
+        //public const float SUDDEN_STOP_ACCELERATE = -5.00f;
+        //public const float SUDDEN_STOP_DURATION = 2.0f;
+        public const float SUDDEN_STOP_ACCELERATE = -4.0f;
+        public const float SUDDEN_STOP_DURATION = 0.4f;
 
         // for sudden steering
-        public const float SUDDEN_STEER_ACCELERATE = 5.00f;
-        public const float SUDDEN_STEER_DURATION = 1.0f;
+            // the commented value is for real measurement
+            // the uncommented value is for demonstration
+        //public const float SUDDEN_STEER_ACCELERATE = 5.00f;
+        //public const float SUDDEN_STEER_DURATION = 1.0f;
+        public const float SUDDEN_STEER_ACCELERATE = 4.0f;
+        public const float SUDDEN_STEER_DURATION = 0.3f;
 
         // for bumps
-        public const float BUMPS_ACCELERATE = 1.00f;
-        public const float BUMPS_DURATION = 5.0f;
+            // the commented value is for real measurement
+            // the uncommented value is for demonstration
+        //public const float BUMPS_ACCELERATE = 1.00f;
+        //public const float BUMPS_DURATION = 5.0f;
+        public const float BUMPS_ACCELERATE = 1.5f;
+        public const float BUMPS_DURATION = 1.5f;
 
         public AcceleratePatternRecognizor()
         {
@@ -100,14 +117,14 @@ namespace TeamFantasyMobileAppService.SimulateDB
             bool result = false;
             int preAppend = (int)(SUDDEN_START_DURATION * RATE);
             int amount = preAppend + NUMBER_OF_RECORDS;
-            List<float> x = AccelerateTable.getX(amount);
+            List<float> z = AccelerateTable.getZ(amount);
             
-            List<bool> record = new List<bool>(x.Count);
+            List<bool> record = new List<bool>(z.Count);
             int start = 0;
             
-            for (int i=0; i<x.Count; i++)
+            for (int i=0; i<z.Count; i++)
             { 
-                if (x[i] < SUDDEN_START_ACCELERATE)
+                if ( -z[i] < SUDDEN_START_ACCELERATE)
                 {
                     if (i-start > SUDDEN_START_DURATION)
                     {
@@ -141,12 +158,12 @@ namespace TeamFantasyMobileAppService.SimulateDB
             bool result = false;
             int preAppend = (int)(SUDDEN_STOP_DURATION * RATE);
             int amount = preAppend + NUMBER_OF_RECORDS;
-            List<float> x = AccelerateTable.getX(amount);
-            List<bool> record = new List<bool>(x.Count);
+            List<float> z = AccelerateTable.getZ(amount);
+            List<bool> record = new List<bool>(z.Count);
             int start = 0;
-            for (int i = 0; i < x.Count; i++)
+            for (int i = 0; i < z.Count; i++)
             {
-                if (x[i] > SUDDEN_STOP_ACCELERATE)
+                if ( -z[i] > SUDDEN_STOP_ACCELERATE)
                 {
                     if (i - start > SUDDEN_START_DURATION)
                     {
@@ -222,12 +239,12 @@ namespace TeamFantasyMobileAppService.SimulateDB
             bool result = false;
             int preAppend = (int)(BUMPS_DURATION* RATE);
             int amount = preAppend + NUMBER_OF_RECORDS;
-            List<float> z = AccelerateTable.getZ(amount);
-            List<bool> record = new List<bool>(z.Count);
+            List<float> x = AccelerateTable.getX(amount);
+            List<bool> record = new List<bool>(x.Count);
             int start = 0;
-            for (int i = 0; i < z.Count; i++)
+            for (int i = 0; i < x.Count; i++)
             {
-                if (z[i] > -BUMPS_ACCELERATE && z[i] < BUMPS_ACCELERATE)
+                if (x[i] > -BUMPS_ACCELERATE && x[i] < BUMPS_ACCELERATE)
                 {
                     if (i - start > BUMPS_DURATION)
                     {
