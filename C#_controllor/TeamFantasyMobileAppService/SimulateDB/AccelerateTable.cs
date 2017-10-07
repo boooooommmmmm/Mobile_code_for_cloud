@@ -145,15 +145,21 @@ namespace TeamFantasyMobileAppService.SimulateDB
         }
 
         // get all the records of accelerates in three dimensions.
-        public static List<float>[] getAccelerates()
+        public static string getAccelerates()
         {
-            List<float>[] result = new List<float>[]
+            string xstring = "x:";
+            string ystring = "y:";
+            string zstring = "z:";
+            if (x.Count < 60) return "x too short";
+            if (y.Count < 60) return "y too short";
+            if (z.Count < 60) return "z too short";
+            for (int i=0; i<60; i++)
             {
-                x,
-                y,
-                z
-            };
-            return result;
+                xstring += x[i].ToString("0.00") + ",";
+                ystring += y[i].ToString("0.00") + ",";
+                zstring += z[i].ToString("0.00") + ",";
+            }
+            return xstring + ystring + zstring;
         }
 
         // access a specified column

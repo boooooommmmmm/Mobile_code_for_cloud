@@ -95,14 +95,15 @@ namespace TeamFantasyMobileAppService.SimulateDB
             // the y positive in mobile is z positive in car
             for (int i=0; i<z.Length; i++)
             {
-                z[i] = -z[i];
-                y[i] = Math.Abs(y[i]);
-                y[i] -= 9.8f;
+                //z[i] = -z[i];
+                //x[i] = 0;
+                //y[i] = 0;
+                //x[i] = Math.Abs(x[i]) - 9.8f;
             }
 
 
-            AccelerateTable.store(time, z, x, y);
-
+            //AccelerateTable.store(time, z, x, y);
+            AccelerateTable.store(time, x, y, z);
             log.Add("Loading Json Succeeded");
         }
 
