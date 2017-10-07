@@ -90,18 +90,18 @@ namespace TeamFantasyMobileAppService.SimulateDB
             value = value.Substring(1, value.Length - 2);
             string[] time = value.Split(',');
             
-            // the z sent from mobile is actually corresponding to x-dim, but the order is inversed
-            // the y sent from mobile is actually corresponding to y-dim
-            // the x sent from mobile is actually corresponding to z-dim
+            // the z negative in mobile is x positive in car
+            // the x positive in mobile is y positive in car
+            // the y positive in mobile is z positive in car
             for (int i=0; i<z.Length; i++)
             {
                 z[i] = -z[i];
-                x[i] = Math.Abs(x[i]);
-                x[i] -= 9.8f;
+                y[i] = Math.Abs(y[i]);
+                y[i] -= 9.8f;
             }
 
 
-            AccelerateTable.store(time, z, y, x);
+            AccelerateTable.store(time, z, x, y);
 
             log.Add("Loading Json Succeeded");
         }
