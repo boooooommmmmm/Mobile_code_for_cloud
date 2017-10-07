@@ -11,6 +11,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
         //       private static List<string> id = new List<string>();
         //       private static List<string> userId = new List<string>();
 
+        // for debug only
         public static List<String> log = new List<string>(); 
 
         public const int TIME = 0;
@@ -77,10 +78,6 @@ namespace TeamFantasyMobileAppService.SimulateDB
         // get the newest accelerate records in x, the length of which is 'amount'
         public static List<float> getX(int amount)
         {
-
-            log.Add("create list");
-
-
             List<float> result = new List<float>();
             
             int start = time.Count - amount;
@@ -89,16 +86,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 amount += start;
                 start = 0;
             }
-
-
-            log.Add("start: " + start);
-
-
+            
             for (int i = 0; i < amount; i++)
             {
-
-                log.Add("x[" + (start + i) + "]: " + x[start + i]);
-
                 result.Add(x[start + i]);
             }
             return result;
