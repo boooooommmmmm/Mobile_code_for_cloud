@@ -167,7 +167,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
 
             int start = 0;
 
-            log.Add("[sudden start] Loop one ");
+            //log.Add("[sudden start] Loop one ");
 
             for (int i = 0; i < x.Count; i++)
             {
@@ -235,6 +235,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
             int start = 0;
             for (int i = 0; i < x.Count; i++)
             {
+                log.Add("round: " + i);
+                log.Add("start = " + start);
+                log.Add("x_i = " + x[i]);
                 if ( x[i] > SUDDEN_STOP_ACCELERATE)
                 {
                     if (i - start > patternLength)
@@ -287,6 +290,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
             int start = 0;
             for (int i = 0; i < y.Count; i++)
             {
+                log.Add("round: " + i);
+                log.Add("start = " + start);
+                log.Add("y_i = " + y[i]);
                 if (y[i] > (- SUDDEN_STEER_ACCELERATE) && y[i] < SUDDEN_STEER_ACCELERATE)
                 {
                     if (i - start > patternLength)
@@ -339,6 +345,9 @@ namespace TeamFantasyMobileAppService.SimulateDB
             int start = 0;
             for (int i = 0; i < z.Count; i++)
             {
+                log.Add("round: " + i);
+                log.Add("start = " + start);
+                log.Add("z_i = " + z[i]);
                 if (z[i] > -BUMPS_ACCELERATE && z[i] < BUMPS_ACCELERATE)
                 {
                     if (i - start > patternLength)
