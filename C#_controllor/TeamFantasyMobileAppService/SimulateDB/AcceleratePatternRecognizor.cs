@@ -289,6 +289,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 log.Add("y[" + i + "]= " + y[i]);
                 if (y[i] > (- SUDDEN_STEER_ACCELERATE) && y[i] < SUDDEN_STEER_ACCELERATE)
                 {
+                    log.Add("true");
                     if (i - start > patternLength)
                     {
                         for (int j = start; j < i; j++)
@@ -298,6 +299,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                         result = true;
                     }
                     start = i + 1;
+                }
+                else
+                {
+                    log.Add("false");
                 }
             }
 
