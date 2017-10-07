@@ -61,7 +61,11 @@ namespace TeamFantasyMobileAppService.SimulateDB
         {
             List<string> result = new List<string>();
             int start = time.Count - amount;
-            if (start < 0) start = 0;
+            if (start < 0)
+            {
+                amount += start;
+                start = 0;
+            }
             for (int i = 0; i < amount; i++)
             {
                 result.Add(time[start + i]);
@@ -82,6 +86,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
             
             int start = time.Count - amount;
             if (start < 0)
+            {
+                amount += start;
+                start = 0;
+            }
             {
                 amount += start;
                 start = 0;
@@ -110,6 +118,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
                 amount += start;
                 start = 0;
             }
+            {
+                amount += start;
+                start = 0;
+            }
             for (int i = 0; i < amount; i++)
             {
                 result.Add(y[start + i]);
@@ -129,6 +141,10 @@ namespace TeamFantasyMobileAppService.SimulateDB
             List<float> result = new List<float>();
             int start = time.Count - amount;
             if (start < 0)
+            {
+                amount += start;
+                start = 0;
+            }
             {
                 amount += start;
                 start = 0;
