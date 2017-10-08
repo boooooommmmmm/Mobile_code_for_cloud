@@ -31,7 +31,7 @@ namespace TeamFantasyMobileAppService.SimulateDB
             // the uncommented value is for demonstration
         //public const float SUDDEN_START_ACCELERATE = 5.00f;
         //public const float SUDDEN_START_DURATION = 2.0f;
-        public const float SUDDEN_START_ACCELERATE = 6.0f;
+        public const float SUDDEN_START_ACCELERATE = 4.0f;
         public const float SUDDEN_START_DURATION = 0.2f;
 
 
@@ -40,30 +40,31 @@ namespace TeamFantasyMobileAppService.SimulateDB
             // the uncommented value is for demonstration
         //public const float SUDDEN_STOP_ACCELERATE = -5.00f;
         //public const float SUDDEN_STOP_DURATION = 2.0f;
-        public const float SUDDEN_STOP_ACCELERATE = -6.0f;
-        public const float SUDDEN_STOP_DURATION = 0.2f;
+        public const float SUDDEN_STOP_ACCELERATE = -8.0f;
+        public const float SUDDEN_STOP_DURATION = 0.5f;
 
         // for sudden steering
             // the commented value is for real measurement
             // the uncommented value is for demonstration
         //public const float SUDDEN_STEER_ACCELERATE = 5.00f;
         //public const float SUDDEN_STEER_DURATION = 1.0f;
-        public const float SUDDEN_STEER_ACCELERATE = 6.0f;
-        public const float SUDDEN_STEER_DURATION = 0.5f;
+        public const float SUDDEN_STEER_ACCELERATE = 4.0f;
+        public const float SUDDEN_STEER_DURATION = 0.2f;
 
         // for bumps
             // the commented value is for real measurement
             // the uncommented value is for demonstration
         //public const float BUMPS_ACCELERATE = 5.00f;
         //public const float BUMPS_DURATION = 5.0f;
-        public const float BUMPS_ACCELERATE = 8.0f;
-        public const float BUMPS_DURATION = 0.8f;
+        public const float BUMPS_ACCELERATE = 3.0f;
+        public const float BUMPS_DURATION = 0.4f;
 
         public AcceleratePatternRecognizor()
         {
             
         }
 
+        // load the content carried in json into the simulate Database
         public void loadJson(string json)
         {
 
@@ -89,25 +90,19 @@ namespace TeamFantasyMobileAppService.SimulateDB
             value = jsonO["result"]["time"].ToString();
             value = value.Substring(1, value.Length - 2);
             string[] time = value.Split(',');
-            
-            // the z negative in mobile is x positive in car
-            // the x positive in mobile is y positive in car
-            // the y positive in mobile is z positive in car
+
             for (int i=0; i<z.Length; i++)
             {
-                //z[i] = -z[i];
-                //x[i] = 0;
-                //y[i] = 0;
-                //x[i] = Math.Abs(x[i]) - 9.8f;
+                z[i] = -z[i];
+                x[i] = Math.Abs(x[i]) - 9.8f;
             }
 
 
-            //AccelerateTable.store(time, z, x, y);
-            AccelerateTable.store(time, x, y, z);
+            AccelerateTable.store(time, z, y, x);
             log.Add("Loading Json Succeeded");
         }
 
-        // a json string to record whether the one or more dangerous patterns are matched 
+        // generate a json string to record whether the one or more dangerous patterns are matched 
         public string checkPatterns()
         {
 
